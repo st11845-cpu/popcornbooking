@@ -1,0 +1,110 @@
+SISTEMA: PopCornBooking
+
+CLASSE: Cinema
+- ListaFilm : List<Film>
+- ListaSale : List<Sala>
+- ListaSpettacoli : List<Spettacolo>
+- ListaPrenotazioni : List<Prenotazione>
+- ListaUtenti : List<Utente>
+
+
+CLASSE: Film
+- ID : int
+- Titolo : string
+- Genere : string
+- Durata : int
+- Trama : string
+- PathLocandina : string
+- ListaRecensioni : List<Recensione>
+- VotoMedio : double
+
+
+CLASSE: Recensione
+- ID : int
+- Utente : Utente
+- Film : Film
+- Voto : int
+- Commento : string
+- Data : DateTime
+
+
+CLASSE: Sala
+- ID : int
+- Nome : string
+- NumeroFile : int
+- PostiPerFila : int
+
+
+CLASSE: Posto
+- Fila : int
+- Numero : int
+- Stato : StatoPosto
+
+
+ENUM: StatoPosto
+- Libero
+- Occupato
+- Selezionato
+
+
+CLASSE: Spettacolo
+- ID : int
+- Film : Film
+- Sala : Sala
+- DataOra : DateTime
+- Prezzo : double
+- Posti : List<Posto>
+
+
+CLASSE: Prenotazione
+- ID : int
+- Spettacolo : Spettacolo
+- Utente : Utente
+- PostiPrenotati : List<Posto>
+- DataPrenotazione : DateTime
+- CodicePrenotazione : string
+
+
+CLASSE: Utente
+- ID : int
+- Nome : string
+- Cognome : string
+- Email : string
+- Telefono : string
+- Username : string
+- Password : string
+- Ruolo : RuoloUtente
+
+
+ENUM: RuoloUtente
+- Admin
+- Cliente
+
+
+CLASSE: Pagamento
+- ID : int
+- Prenotazione : Prenotazione
+- Importo : double
+- Metodo : MetodoPagamento
+- DataPagamento : DateTime
+- Stato : StatoPagamento
+
+
+ENUM: MetodoPagamento
+- CartaCredito
+- PayPal
+- Contanti
+
+
+ENUM: StatoPagamento
+- InAttesa
+- Completato
+- Annullato
+
+
+CLASSE: Notifica
+- ID : int
+- Utente : Utente
+- Messaggio : string
+- DataInvio : DateTime
+- Letta : bool
